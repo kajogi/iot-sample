@@ -50,3 +50,16 @@ def main():
         print()
 
 main()
+
+# NodeMCU LED Dimming	
+from time import sleep_ms
+from machine import Pin, PWM
+led = PWM(Pin(2, Pin.OUT), freq=400) # Initialize at 400Hz
+
+for j in range(0,10):
+    for i in range(1023,-1,-10):
+        led.duty(i)
+        sleep_ms(5)
+    for i in range(0, 1024, 10):
+        led.duty(i)
+        sleep_ms(2)
